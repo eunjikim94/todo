@@ -1,0 +1,82 @@
+.todoapp {
+  ul{
+      list-style: none;
+  }
+background-color: #fff;
+margin: 130px 0 40px 0;
+position: relative;
+box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 25px 50px 0 rgb(0 0 0 / 10%);
+.header {
+  // position: relative;
+  ::ng-deep .mat-button {
+    ::ng-deep .mat-icon{
+     font-size: 22px;
+     color:#e6e6e6;
+    }
+  }
+  .mat-button-focus-overlay {
+    background-color: transparent!important;
+}
+  h1 {
+    position: absolute;
+    top: -80px;
+    width: 100%;
+    text-align: center;
+    width: 100%;
+    font-size: 100px;
+    // font-weight: 100;
+    color: rgba(175, 47, 47, 0.15);
+    -webkit-text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility;
+  }
+  ::ng-deep .newTodo{
+      position: relative;
+      margin: 0;
+      width: 100%;
+      font-family: inherit;
+      font-weight: inherit;
+      line-height: 1.4em;
+  }
+  // ::ng-deep .mat-checkbox-frame{
+  //   border:none;
+  //   background-color: #fff;
+  //   // color:red;
+  // }
+  
+}
+.main {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid #e6e6e6;
+}
+}
+
+::ng-deep .custom-frame {
+& .mat-checkbox-background,
+.mat-checkbox-frame {
+  border-radius: 50% !important;
+}
+}
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+::-webkit-input-placeholder {
+font-style: italic;
+}
+:-moz-placeholder {
+font-style: italic;
+}
+::-moz-placeholder {
+font-style: italic;
+}
+:-ms-input-placeholder {
+font-style: italic;
+}
+
+
+ul {
+    margin:0;
+    padding:10px 10px 10px 10px;
+    border:1px solid #dddddd;
+  }

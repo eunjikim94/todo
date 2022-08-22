@@ -1,0 +1,33 @@
+<section class="todoapp">
+  <header class="header">
+    <h1>todos</h1>
+    <button mat-button [disableRipple]="true"  *ngIf="todos.length"><mat-icon>check</mat-icon></button>
+    <mat-form-field  floatLabel="never" appearance="standard">
+      <input matInput #txtVal class="newTodo" placeholder="What needs to be done?"  (keydown.enter)="add(txtVal.value); txtVal.value='' " />
+    </mat-form-field>
+  </header>
+
+  <section class="main" *ngIf="todos.length">
+    <!-- <input type="text" type="checkbox" />
+    <label for=""></label> -->
+    <ul class="todo-list"  *ngFor="let todo of todos">
+      <li>
+        <mat-checkbox class="custom-frame" ></mat-checkbox>
+        <mat-form-field  floatLabel="never" appearance="standard">
+          <input matInput class="newTodo" #txtUpdateVal value={{todo.text}} (click)="edit(todo)" (keydown.enter)="update(txtUpdateVal.value);"/>
+        </mat-form-field>
+        <button mat-button class="deleteBtn"(click)="delete(todo.text)">x</button>
+      </li>
+    </ul>
+  </section>
+
+  <footer *ngIf="todos.length">
+    <span><strong>0</strong> items left</span>
+    <ul>
+      <li>All</li>
+      <li>Active</li>
+      <li>Completed</li>
+    </ul>
+  </footer>
+</section>
+
