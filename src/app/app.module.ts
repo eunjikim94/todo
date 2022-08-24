@@ -51,6 +51,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { FormsModule } from '@angular/forms';
 import { TodoComponent } from './todo/todo.component';
+import { Routes, RouterModule } from '@angular/router';
+
+const routes: Routes = [
+  { path: ':status', component: TodoComponent },
+  { path: '**', redirectTo: '/all' }
+];
 
 @NgModule({
   declarations: [
@@ -58,6 +64,7 @@ import { TodoComponent } from './todo/todo.component';
     TodoComponent
   ],
   imports: [
+    RouterModule.forRoot(routes),
     BrowserModule,
     AppRoutingModule,
     FormsModule,

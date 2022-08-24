@@ -1,82 +1,211 @@
 .todoapp {
-  ul{
-      list-style: none;
-  }
-background-color: #fff;
-margin: 130px 0 40px 0;
-position: relative;
-box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 25px 50px 0 rgb(0 0 0 / 10%);
-.header {
-  // position: relative;
-  ::ng-deep .mat-button {
-    ::ng-deep .mat-icon{
-     font-size: 22px;
-     color:#e6e6e6;
+  background-color: #fff;
+  margin: 130px 0 40px 0;
+  position: relative;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 25px 50px 0 rgb(0 0 0 / 10%);
+  .header {
+    display: grid;
+    .inputPos {
+      display: grid;
+      grid-template-columns: 10% 90%;
+    }
+    ::ng-deep .mat-button {
+      ::ng-deep .mat-icon {
+        font-size: 22px;
+        color: #e6e6e6;
+      }
+    }
+    .mat-button-focus-overlay {
+      background-color: transparent !important;
+    }
+    h1 {
+      position: absolute;
+      top: -80px;
+      width: 100%;
+      text-align: center;
+      width: 100%;
+      font-size: 100px;
+      color: rgba(175, 47, 47, 0.15);
+      -webkit-text-rendering: optimizeLegibility;
+      -moz-text-rendering: optimizeLegibility;
+      text-rendering: optimizeLegibility;
+    }
+    .newTodo {
+      background: rgba(0, 0, 0, 0.003);
+      padding: 16px;
+      border: none;
+      background: rgba(0, 0, 0, 0.003);
+      box-shadow: inset 0 -2px 1px rgb(0 0 0 / 3%);
+      font-size: 24px;
     }
   }
-  .mat-button-focus-overlay {
-    background-color: transparent!important;
-}
-  h1 {
-    position: absolute;
-    top: -80px;
-    width: 100%;
-    text-align: center;
-    width: 100%;
-    font-size: 100px;
-    // font-weight: 100;
-    color: rgba(175, 47, 47, 0.15);
-    -webkit-text-rendering: optimizeLegibility;
-    -moz-text-rendering: optimizeLegibility;
-    text-rendering: optimizeLegibility;
-  }
-  ::ng-deep .newTodo{
-      position: relative;
-      margin: 0;
-      width: 100%;
-      font-family: inherit;
-      font-weight: inherit;
-      line-height: 1.4em;
-  }
-  // ::ng-deep .mat-checkbox-frame{
-  //   border:none;
-  //   background-color: #fff;
-  //   // color:red;
-  // }
+  .main {
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid #e6e6e6;
+    .todo-list li.completed label {
+      color: #d9d9d9;
+      text-decoration: line-through;
+    }
   
+    .todo-list {
+      margin: 0;
+      padding: 0;
+      
+      .todo-list li .destroy {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 10px;
+        bottom: 0;
+        width: 40px;
+        height: 40px;
+        margin: auto 0;
+        font-size: 30px;
+        color: #cc9a9a;
+        margin-bottom: 11px;
+        transition: color 0.2s ease-out;
+      }
+      .todo-list li .destroy:after {
+        content: "×";
+      }
+      .todo-list li:hover .destroy {
+        display: block;
+      }
+  
+
+      .view {
+        word-break: break-all;
+        padding: 15px;
+        display: block;
+        line-height: 1.2;
+        transition: color 0.4s;
+        border-bottom: 1px solid #e6e6e6;
+        display: grid;
+        grid-template-columns: 10% 80% 10%;
+        font-size: 24px;
+        input[type="checkbox"] {
+          width: 35px; /* Set width */
+          height: 35px; /* Set height */
+          clip-path: circle(46% at 50% 50%); /* Set the clip path of circle*/
+        }
+        button {
+          margin: 0;
+          padding: 0;
+          border: 0;
+          background: none;
+          font-size: 100%;
+          vertical-align: baseline;
+          font-family: inherit;
+          font-weight: inherit;
+          color: inherit;
+          -webkit-appearance: none;
+          appearance: none;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+  
+        ::ng-deep .mat-button-focus-overlay {
+          background-color: transparent !important;
+        }
+
+        // .view:hover + ::ng-deep .mat-button{
+        //   // display: block;
+        //     color: #cc9a9a;
+        //     transition: color 0.2s ease-out;
+
+        // }
+      }
+
+      .todo-list li .destroy {
+        // display: none;
+        position: absolute;
+        top: 0;
+        right: 10px;
+        bottom: 0;
+        width: 40px;
+        height: 40px;
+        margin: auto 0;
+        font-size: 30px;
+        color: #cc9a9a;
+        margin-bottom: 11px;
+        transition: color 0.2s ease-out;
+      }
+      .todo-list li .destroy:after {
+        content: "×";
+      }
+      .todo-list li:hover .destroy {
+        display: block;
+      }
+  
+      
+    }
+  }
 }
-.main {
-  position: relative;
-  z-index: 2;
+.footer {
+  color: #777;
+  padding: 10px 15px;
+  height: 20px;
+  text-align: center;
   border-top: 1px solid #e6e6e6;
-}
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  position: relative;
+  padding: 0px 10px;
+  height: 45px;
+  span {
+    padding: 10px 0px;
+  }
+  ul {
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px 0px;
+    margin: 0px;
+    li {
+      display: inline-block;
+      padding: 0px 10px;
+    }
+  }
+  ::ng-deep .mat-button {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    margin: 0;
+    padding: 10px 0px;
+    line-height: normal;
+  }
 }
 
-::ng-deep .custom-frame {
-& .mat-checkbox-background,
-.mat-checkbox-frame {
-  border-radius: 50% !important;
+.footer:before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  overflow: hidden;
+  box-shadow: 0 1px 1px rgb(0 0 0 / 20%), 0 8px 0 -3px #f6f6f6,
+    0 9px 1px -3px rgb(0 0 0 / 20%), 0 16px 0 -6px #f6f6f6,
+    0 17px 2px -6px rgb(0 0 0 / 20%);
 }
-}
-::ng-deep .mat-form-field-underline {
-  display: none;
-}
+
 ::-webkit-input-placeholder {
-font-style: italic;
+  font-style: italic;
+  color: #e6e6e6;
 }
 :-moz-placeholder {
-font-style: italic;
+  font-style: italic;
+  color: #e6e6e6;
 }
 ::-moz-placeholder {
-font-style: italic;
+  font-style: italic;
+  color: #e6e6e6;
 }
 :-ms-input-placeholder {
-font-style: italic;
+  font-style: italic;
+  color: #e6e6e6;
 }
 
-
-ul {
-    margin:0;
-    padding:10px 10px 10px 10px;
-    border:1px solid #dddddd;
-  }
+input:focus {
+  outline: none;
+}
