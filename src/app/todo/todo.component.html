@@ -38,12 +38,12 @@
     <ul class="filters">
       <!-- <li><a [routerLink]="['',]" [ngClass]="{'selected': filter == 'SHOW_ALL'}">All</a></li>
       <li><a [routerLink]="['', 'active']" [ngClass]="{'selected': filter == 'SHOW_ACTIVE'}">Active</a></li>
-			<li><a [routerLink]="['', 'completed']" [ngClass]="{'selected': filter == 'SHOW_COMPLETED'}">Completed</a>   -->
+			<li><a [routerLink]="['', 'completed']" [ngClass]="{'selected': filter == 'SHOW_COMPLETED'}">Completed</a></li> -->
         <li><a [routerLink]="['/all']"  [class.selected]="filter == 'SHOW_ALL'">All</a></li>
         <li><a [routerLink]="['/active']" [class.seleted]="filter == 'SHOW_ACTIVE'">Active</a></li>
-        <li><a [routerLink]="['/completed']"  [class.selected]="filter == 'SHOW_COMPLETED'">Completed</a>  
+        <li><a [routerLink]="['/completed']"  [class.selected]="filter == 'SHOW_COMPLETED'">Completed</a></li>
     </ul>
-   <button mat-button *ngIf="completed" class="clearBtn" (click)="clearCompleted()">Clear completed</button>
+   <button *ngIf="completed" class="clearBtn" (click)="clearCompleted()">Clear completed</button>
   </footer>
 </section>
 

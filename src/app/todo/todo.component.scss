@@ -1,4 +1,5 @@
 .todoapp {
+  z-index: 3;
   background-color: #fff;
   margin: 130px 0 40px 0;
   position: relative;
@@ -51,26 +52,28 @@
     .todo-list {
       margin: 0;
       padding: 0;
-      
-      .todo-list li .destroy {
+      li .destroy {
         display: none;
-        position: absolute;
+        // position: absolute;
         top: 0;
         right: 10px;
         bottom: 0;
-        width: 40px;
-        height: 40px;
+        width: 35px;
+        height: 35px;
         margin: auto 0;
         font-size: 30px;
         color: #cc9a9a;
-        margin-bottom: 11px;
+        // margin-bottom: 11px;
         transition: color 0.2s ease-out;
       }
-      .todo-list li .destroy:after {
+      li .destroy:after {
         content: "×";
       }
-      .todo-list li:hover .destroy {
+       li:hover .destroy {
         display: block;
+      }
+      li .destroy:hover {
+        color: #af5b5e;
       }
   
 
@@ -89,60 +92,33 @@
           height: 35px; /* Set height */
           clip-path: circle(46% at 50% 50%); /* Set the clip path of circle*/
         }
-        button {
-          margin: 0;
-          padding: 0;
-          border: 0;
-          background: none;
-          font-size: 100%;
-          vertical-align: baseline;
-          font-family: inherit;
-          font-weight: inherit;
-          color: inherit;
-          -webkit-appearance: none;
-          appearance: none;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-        }
+        // button {
+        //   margin: 0;
+        //   padding: 0;
+        //   border: 0;
+        //   background: none;
+        //   font-size: 100%;
+        //   vertical-align: baseline;
+        //   font-family: inherit;
+        //   font-weight: inherit;
+        //   color: inherit;
+        //   -webkit-appearance: none;
+        //   appearance: none;
+        //   -webkit-font-smoothing: antialiased;
+        //   -moz-osx-font-smoothing: grayscale;
+        // }
   
         ::ng-deep .mat-button-focus-overlay {
           background-color: transparent !important;
         }
 
-        // .view:hover + ::ng-deep .mat-button{
-        //   // display: block;
-        //     color: #cc9a9a;
-        //     transition: color 0.2s ease-out;
-
-        // }
       }
-
-      .todo-list li .destroy {
-        // display: none;
-        position: absolute;
-        top: 0;
-        right: 10px;
-        bottom: 0;
-        width: 40px;
-        height: 40px;
-        margin: auto 0;
-        font-size: 30px;
-        color: #cc9a9a;
-        margin-bottom: 11px;
-        transition: color 0.2s ease-out;
-      }
-      .todo-list li .destroy:after {
-        content: "×";
-      }
-      .todo-list li:hover .destroy {
-        display: block;
-      }
-  
       
     }
   }
 }
 .footer {
+  z-index: 100;
   color: #777;
   padding: 10px 15px;
   height: 20px;
@@ -157,6 +133,7 @@
     padding: 10px 0px;
   }
   ul {
+    z-index: 3;
     margin: 0 auto;
     text-align: center;
     padding: 10px 0px;
@@ -166,23 +143,31 @@
       padding: 0px 10px;
     }
   }
-  ::ng-deep .mat-button {
+  .clearBtn {
     position: absolute;
     top: 0;
     right: 10px;
     margin: 0;
+    padding:0;
     padding: 10px 0px;
     line-height: normal;
   }
+  .clearBtn:hover{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
 }
 
 .footer:before {
+  
   content: "";
   position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
-  height: 50px;
+  z-index: 0;
+  height: 100px;
   overflow: hidden;
   box-shadow: 0 1px 1px rgb(0 0 0 / 20%), 0 8px 0 -3px #f6f6f6,
     0 9px 1px -3px rgb(0 0 0 / 20%), 0 16px 0 -6px #f6f6f6,
@@ -208,4 +193,22 @@
 
 input:focus {
   outline: none;
+}
+
+
+
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 100%;
+  vertical-align: baseline;
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
