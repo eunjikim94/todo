@@ -58,8 +58,8 @@ export class TodoComponent implements OnInit, DoCheck, OnDestroy {
   //변경감지되면 자동호출, noOnChanges와 다름 많이 사용시 성능 저하
   ngDoCheck(): void {
     this.todos = this.todoService.findAll();
+    // filtertodos
 		this.filterTodos = this.todos.filter((t) => FilterUtil.accepts(t, this.filter));
-    console.log(this.filterTodos);
     this.remaining = this.completed = 0;
     console.log(this.remaining);
 		this.todos.forEach(t => t.completed ? this.completed++ : this.remaining++);

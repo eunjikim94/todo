@@ -59,6 +59,7 @@ export class TodoService{
 		this.save();
 	}
 
+
 	toggleCheckAll(completed: boolean) {
 		this.todos.forEach((t) => t.completed = completed);
 		this.save();
