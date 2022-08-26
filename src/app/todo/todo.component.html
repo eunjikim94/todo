@@ -3,47 +3,93 @@
     <h1>todos</h1>
     <!-- <button class="checkedColor" mat-button [disableRipple]="true" [ngStyle]="{'visibility': todos.length ? 'visible':'hidden'}" (click)="toggleAllSelection()"  [ngClass]="{'gray' : toggle, 'red': !toggle}"><mat-icon>check</mat-icon></button> -->
     <!-- <mat-checkbox  [ngStyle]="{'visibility': todos.length ? 'visible':'hidden'}" checked="false"></mat-checkbox> -->
-    
+
+    <!-- 입력부분 -->
     <div class="inputPos">
-      <input class="toggle-all" [ngStyle]="{'visibility': todos.length ? 'visible':'hidden'}" type="checkbox"
-      #CheckAll [checked]="allCompleted" (click)="toggleCheckAll(CheckAll.checked)">
-      <!-- <mat-form-field  floatLabel="never" appearance="standard"> -->
-        <!-- <label for="toggle-all">Mark all as complete</label> -->
-        <input #txtVal class="newTodo" autofocus [(ngModel)]="newTodo" placeholder="What needs to be done?"  (keyup.enter)="add(txtVal.value)"/>
+      <input
+        id="toggle-all"
+        class="toggle-all"
+        type="checkbox"
+        #CheckAll
+        [checked]="allCompleted"
+        (click)="toggleCheckAll(CheckAll.checked)"
+      />
+      <label for="toggle-all"   [ngStyle]="{ visibility: todos.length ? 'visible' : 'hidden' }"></label>
+
+      <input
+        #txtVal
+        class="newTodo"
+        autofocus
+        [(ngModel)]="newTodo"
+        placeholder="What needs to be done?"
+        (keyup.enter)="add(txtVal.value)"
+      />
       <!-- </mat-form-field>   -->
     </div>
-
   </header>
 
+<!-- 리스트 -->
   <section class="main">
     <ul class="todo-list">
-			<li *ngFor="let todo of filterTodos"
-				 [ngClass]="{'completed' : todo.completed, 'editing': todo == currentTodo}">
-				<div class="view">
-					<input class="toggle" type="checkbox" (change)="toggle(todo)" [checked]="todo.completed">
-					<label *ngIf="currentTodo?.id != todo.id" (dblclick)="edit(todo)">{{todo.title}}</label>
-					<button (click)="delete(todo)" class="destroy">
-          </button>
-				</div>
-				<input *ngIf="currentTodo == todo" [(ngModel)]="currentTodo.title"
-						 (keyup.enter)="update(currentTodo)"
-						 (keyup.esc)="cancelEdit()"
-						 class="edit" autofocus>
-			</li>
-		</ul>
+      <li
+        *ngFor="let todo of filterTodos; index as i"
+        [ngClass]="{ completed: todo.completed, editing: todo === currentTodo }"
+      >
+        <div class="view">
+          <div class="checkCustom">
+            <input
+            *ngIf="currentTodo != todo"
+            id="{{todo.id}}"
+            class="toggles"
+            type="checkbox"
+            (change)="toggle(todo)"
+            [checked]="todo.completed"
+          />
+          <label for="{{todo.id}}"></label>
+          </div>
+        
+          <label *ngIf="currentTodo?.id != todo.id" (dblclick)="edit(todo)">{{
+            todo.title
+          }}</label>
+          <input
+          *ngIf="currentTodo === todo"
+          [(ngModel)]="currentTodo.title"
+          (keyup.enter)="update(currentTodo)"
+          (keyup.esc)="cancelEdit()"
+          class="edit"
+          autofocus
+        />
+          <button (click)="delete(todo)" class="destroy"></button>
+        </div>
+        
+      </li>
+    </ul>
   </section>
 
-  <footer *ngIf="todos.length> 0" class="footer">
-    <span class="todo-count"><strong>{{remaining}}</strong> item{{remaining !== 1 ? 's' : ''}} left</span>
+  <!-- 개수 링크 삭제 -->
+  <footer *ngIf="todos.length > 0" class="footer">
+    <span class="todo-count"
+      ><strong>{{ remaining }}</strong> item{{
+        remaining !== 1 ? "s" : ""
+      }}
+      left</span
+    >
     <ul class="filters">
       <!-- <li><a [routerLink]="['',]" [ngClass]="{'selected': filter == 'SHOW_ALL'}">All</a></li>
       <li><a [routerLink]="['', 'active']" [ngClass]="{'selected': filter == 'SHOW_ACTIVE'}">Active</a></li>
 			<li><a [routerLink]="['', 'completed']" [ngClass]="{'selected': filter == 'SHOW_COMPLETED'}">Completed</a></li> -->
-        <li><a [routerLink]="['/all']"  [class.selected]="filter == 'SHOW_ALL'">All</a></li>
-        <li><a [routerLink]="['/active']" [class.seleted]="filter == 'SHOW_ACTIVE'">Active</a></li>
-        <li><a [routerLink]="['/completed']"  [class.selected]="filter == 'SHOW_COMPLETED'">Completed</a></li>
+      <li>
+        <a [routerLink]="['/all']" [class.selected]="filter == 'SHOW_ALL'">All</a>
+      </li>
+      <li>
+        <a [routerLink]="['/active']" [class.seleted]="filter == 'SHOW_ACTIVE'">Active</a>
+      </li>
+      <li>
+        <a [routerLink]="['/completed']" [class.selected]="filter == 'SHOW_COMPLETED'">Completed</a>
+      </li>
     </ul>
-   <button *ngIf="completed" class="clearBtn" (click)="clearCompleted()">Clear completed</button>
+    <button *ngIf="completed" class="clearBtn" (click)="clearCompleted()">
+      Clear completed
+    </button>
   </footer>
 </section>
-

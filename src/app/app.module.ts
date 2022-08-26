@@ -54,7 +54,7 @@ import { TodoComponent } from './todo/todo.component';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: ':status', component: TodoComponent },
+  { path: ':filter', component: TodoComponent },
   { path: '**', redirectTo: '/all' }
 ];
 

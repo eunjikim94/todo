@@ -25,14 +25,17 @@ export class TodoComponent implements OnInit, DoCheck, OnDestroy {
 	completed: number;
 	remaining: number;
 	allCompleted: boolean;
-  // toggle = true;
-// status = 'Enable';
-  // checkTemp:any = [];
+  checkShow: boolean;
+  
+  
+
   private routeSubscription: Subscription;
 
 
 
-  constructor(private todoService:TodoService, private route:ActivatedRoute) { }
+  constructor(private todoService:TodoService, private route:ActivatedRoute) { 
+    this.checkShow = true;
+  }
 
 
   //create
@@ -46,26 +49,27 @@ export class TodoComponent implements OnInit, DoCheck, OnDestroy {
   ngOnInit(): void {
      this.route.params.subscribe(params=>
       {
-        this.filter = FilterUtil.fromString(params['status']);
+        this.filter = FilterUtil.fromString(params['filter']);
+        console.log(this.filter);
       });
   }
 
-  //변경감지되고난 이후
+  //변경감지되면 자동호출, noOnChanges와 다름 많이 사용시 성능 저하
   ngDoCheck(): void {
     this.todos = this.todoService.findAll();
 		this.filterTodos = this.todos.filter((t) => FilterUtil.accepts(t, this.filter));
-    console.log(1);
     console.log(this.filterTodos);
     this.remaining = this.completed = 0;
+    console.log(this.remaining);
 		this.todos.forEach(t => t.completed ? this.completed++ : this.remaining++);
 		this.allCompleted = this.todos.length === this.completed;
-    
   }
 
   ngOnDestroy(): void {
-    this.routeSubscription.unsubscribe();//구독해지
+    this.routeSubscription.unsubscribe();
   }
   edit(todo: Todos) {
+    this.checkShow = !this.checkShow;
 		this.currentTodo = todo;
 		this.snapshot = TodoUtils.copy(todo);
 	}
@@ -90,6 +94,7 @@ export class TodoComponent implements OnInit, DoCheck, OnDestroy {
 		this.todoService.toggle(todo);
 	}
 
+  
 	toggleCheckAll(completed: boolean) {
 		this.todoService.toggleCheckAll(completed);
 	}

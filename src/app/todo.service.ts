@@ -54,6 +54,7 @@ export class TodoService{
 	}
 
 	toggle(todo: Todos) {
+		// console.log(todo.completed);
 		todo.completed = !todo.completed;
 		this.save();
 	}
@@ -64,8 +65,9 @@ export class TodoService{
 	}
 
 	clearCompleted() {
-		//체크된거삭제하고 
+		//check -> true x -> false 출력
 		this.todos = this.todos.filter((t) => !t.completed);
+		console.log(this.todos);
 		this.save();
 	}
 
