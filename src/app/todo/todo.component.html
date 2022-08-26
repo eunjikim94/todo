@@ -33,7 +33,7 @@
     <ul class="todo-list">
       <li
         *ngFor="let todo of filterTodos; index as i"
-        [ngClass]="{ completed: todo.completed, editing: todo === currentTodo }"
+        [ngClass]="{ completed: todo.completed ,editing: todo === currentTodo }"
       >
         <div class="view">
           <div class="checkCustom">

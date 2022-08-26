@@ -112,11 +112,17 @@
         color: #af5b5e;
       }
 
+      // .comleted{
+      //   padding:8px!important;
+      //   line-height: 1.2;
+      // }
+
       .view {
         word-break: break-all;
-        padding: 8px;
+        // height:50px;
         display: block;
         line-height: 1.2;
+        padding:8px;
         transition: color 0.4s;
         border-bottom: 1px solid #e6e6e6;
         display: grid;
@@ -127,6 +133,7 @@
         // .toggles{
         //   margin:8px!;
         // }
+      
         //for check box시 id for 각각
         input[type="checkbox"] {
           display: none;
@@ -157,11 +164,11 @@
         }
 
         .edit{
-          width:111%;
-          height:30px;
-          margin-top:1px;
-          // padding:0;
-          // margin:0;
+          width:112.8%;
+          height:45px;
+          // margin-top:1px;
+          // padding:8px;
+          margin:-7px 0px;
           z-index: 20;
           border: 0.5px solid #999;
           box-shadow: inset 1px 1px 5px 1px #efefef;

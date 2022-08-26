@@ -25,7 +25,7 @@ export class TodoComponent implements OnInit, DoCheck, OnDestroy {
 	completed: number;
 	remaining: number;
 	allCompleted: boolean;
-  checkShow: boolean;
+  viewPadding: any;
   
   
 
@@ -34,7 +34,7 @@ export class TodoComponent implements OnInit, DoCheck, OnDestroy {
 
 
   constructor(private todoService:TodoService, private route:ActivatedRoute) { 
-    this.checkShow = true;
+  
   }
 
 
@@ -47,6 +47,7 @@ export class TodoComponent implements OnInit, DoCheck, OnDestroy {
 
   
   ngOnInit(): void {
+    // this.viewPadding.style.padding = "8";
      this.route.params.subscribe(params=>
       {
         this.filter = FilterUtil.fromString(params['filter']);
@@ -63,13 +64,13 @@ export class TodoComponent implements OnInit, DoCheck, OnDestroy {
     console.log(this.remaining);
 		this.todos.forEach(t => t.completed ? this.completed++ : this.remaining++);
 		this.allCompleted = this.todos.length === this.completed;
+    
   }
 
   ngOnDestroy(): void {
     this.routeSubscription.unsubscribe();
   }
   edit(todo: Todos) {
-    this.checkShow = !this.checkShow;
 		this.currentTodo = todo;
 		this.snapshot = TodoUtils.copy(todo);
 	}
