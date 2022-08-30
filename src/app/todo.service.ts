@@ -10,16 +10,19 @@ import { Todos } from './todo';
 export class TodoService{
 
   id =  0;
-  todos: Todos[] = [];
+  todos: Todos[];
   private static KEY = 'todo';
 
 
   constructor() {
     // super();
     // this.load();
+
+	//초기 빈배열값
+	this.todos = [];
     this.storage();
-    if (this.todos.length > 0) {
-			this.id = this.todos[this.todos.length - 1].id;
+    if (this.todos?.length > 0) {
+			this.id = this.todos[this.todos?.length - 1]?.id;
 		}
    }
 
@@ -29,15 +32,20 @@ export class TodoService{
 
    //create
   addTodo(txtVal: string) : Todos{
+
     txtVal = txtVal.trim();
     //  if (txtVal.length === 0){
     //     return;
     //   }
+	console.log(txtVal);
+	console.log(this.todos);
     const newTodo = new Todos(++this.id, txtVal);
-    this.todos.push(newTodo);
+	console.log(newTodo);
 
-    console.log(this.todos);
+    this.todos?.push(newTodo);
+	console.log(this.todos);
     this.save();
+
     return newTodo;
   }
   update(todo: Todos) {
@@ -67,7 +75,7 @@ export class TodoService{
 
 	clearCompleted() {
 		//check -> true x -> false 출력
-		this.todos = this.todos.filter((t) => !t.completed);
+		this.todos = this.todos?.filter((t) => !t.completed);
 		console.log(this.todos);
 		this.save();
 	}

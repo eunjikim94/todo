@@ -14,7 +14,7 @@
         [checked]="allCompleted"
         (click)="toggleCheckAll(CheckAll.checked)"
       />
-      <label for="toggle-all"   [ngStyle]="{ visibility: todos.length ? 'visible' : 'hidden' }"></label>
+      <label for="toggle-all"   [ngStyle]="{ visibility: todos?.length ? 'visible' : 'hidden' }"></label>
 
       <input
         #txtVal
@@ -43,12 +43,12 @@
             class="toggles"
             type="checkbox"
             (change)="toggle(todo)"
-            [checked]="todo.completed"
+            [checked]="todo?.completed"
           />
           <label for="{{todo.id}}"></label>
           </div>
         
-          <label *ngIf="currentTodo?.id != todo.id" (dblclick)="edit(todo)">{{
+          <label *ngIf="currentTodo?.id != todo?.id" (dblclick)="edit(todo)">{{
             todo.title
           }}</label>
           <input
@@ -67,7 +67,7 @@
   </section>
 
   <!-- 개수 링크 삭제 -->
-  <footer *ngIf="todos.length > 0" class="footer">
+  <footer *ngIf="todos?.length > 0" class="footer">
     <span class="todo-count"
       ><strong>{{ remaining }}</strong> item{{
         remaining !== 1 ? "s" : ""

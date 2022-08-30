@@ -17,9 +17,9 @@ export class TodoComponent implements OnInit, DoCheck, OnDestroy {
   filter = Filter.ALL;
   text:any;
   snapshot: Todos;
-  todos: Todos[];
-  currentTodo: Todos;
-  filterTodos : Todos[];
+  todos: Todos[]=[];
+  currentTodo?: Todos;
+  filterTodos : Todos[]=[];
   oldText:any;
   checked:boolean;
 	completed: number;
@@ -43,6 +43,7 @@ export class TodoComponent implements OnInit, DoCheck, OnDestroy {
     if(txtVal.trim().length === 0) { return; }
     this.todoService.addTodo(txtVal);
     this.newTodo = '';
+    console.log(txtVal);
    }
 
   
@@ -59,11 +60,11 @@ export class TodoComponent implements OnInit, DoCheck, OnDestroy {
   ngDoCheck(): void {
     this.todos = this.todoService.findAll();
     // filtertodos
-		this.filterTodos = this.todos.filter((t) => FilterUtil.accepts(t, this.filter));
+		this.filterTodos = this.todos?.filter((t) => FilterUtil.accepts(t, this.filter));
     this.remaining = this.completed = 0;
-    console.log(this.remaining);
-		this.todos.forEach(t => t.completed ? this.completed++ : this.remaining++);
-		this.allCompleted = this.todos.length === this.completed;
+    // console.log(this.remaining);
+		this.todos?.forEach(t => t.completed ? this.completed++ : this.remaining++);
+		this.allCompleted = this.todos?.length === this.completed;
     
   }
 
