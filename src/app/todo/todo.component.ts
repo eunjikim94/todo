@@ -17,9 +17,9 @@ export class TodoComponent implements OnInit, DoCheck, OnDestroy {
   filter = Filter.ALL;
   text:any;
   snapshot: Todos;
-  todos: Todos[]=[];
+  todos?: Todos[]=[];
   currentTodo?: Todos;
-  filterTodos : Todos[]=[];
+  filterTodos? : Todos[]=[];
   oldText:any;
   checked:boolean;
 	completed: number;
@@ -34,6 +34,7 @@ export class TodoComponent implements OnInit, DoCheck, OnDestroy {
 
 
   constructor(private todoService:TodoService, private route:ActivatedRoute) { 
+    
   
   }
 
@@ -43,7 +44,7 @@ export class TodoComponent implements OnInit, DoCheck, OnDestroy {
     if(txtVal.trim().length === 0) { return; }
     this.todoService.addTodo(txtVal);
     this.newTodo = '';
-    console.log(txtVal);
+    // console.log(txtVal);
    }
 
   
