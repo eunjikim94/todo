@@ -10,20 +10,17 @@ import { Todos } from './todo';
 export class TodoService{
 
   id =  0;
-  todos: Todos[]=[];
+  todos?: Todos[]=[];
   private static KEY = 'todo';
 
 
   constructor() {
-    // super();
-    // this.load();
-
-	//초기 빈배열값
-	// this.todos = [];
     this.storage();
     if (this.todos?.length > 0) {
 			this.id = this.todos[this.todos?.length - 1]?.id;
 		}
+
+		this.todos = [];
    }
 
    findAll() {
@@ -34,14 +31,8 @@ export class TodoService{
   addTodo(txtVal: string) : Todos{
 
     txtVal = txtVal.trim();
-    //  if (txtVal.length === 0){
-    //     return;
-    //   }
 	console.log(txtVal);
-	console.log(this.todos);
-    let newTodo = new Todos(++this.id, txtVal);
-	console.log(newTodo);
-
+    const newTodo = new Todos(++this.id, txtVal);
     this.todos?.push(newTodo);
 	console.log(this.todos);
     this.save();
